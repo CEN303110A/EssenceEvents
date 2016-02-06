@@ -1,4 +1,4 @@
-angular.module('listings').controller('ListingsController', ['$scope', '$location', '$stateParams', '$state', 'Listings',
+angular.module('WebApp').controller('ListingsController', ['$scope', '$location', '$stateParams', '$state', 'Listings',
   function($scope, $location, $stateParams, $state, Listings){
     $scope.find = function() {
       /* set loader*/

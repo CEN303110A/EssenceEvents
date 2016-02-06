@@ -5,10 +5,19 @@ var config = require('./config/config.js'),
     bodyparser = require('body-parser'),
     app = express();
 
+//configure views
+app.use(morgan('dev'));
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(express.static('view'));
+
+app.use('/bower_components', express.static(__dirname + '/bower_components'));
+
 app.get('/' , function(req , res){
+	res.sendFile('/index.html');
+});
+
+app.get('/*' , function(req , res){
 	res.sendFile('/index.html');
 });
 
@@ -28,7 +37,7 @@ app.post('/createCustomer', function(req, res) {
       budget = req.body.budget,
       events = req.body.events;
 
-     */      
+     */
 });
 
 app.listen(config.port, function() {

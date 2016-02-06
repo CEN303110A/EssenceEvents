@@ -1,4 +1,4 @@
-angular.module('listings').factory('Listings', ['$http',
+angular.module('WebApp').factory('Listings', ['$http',
   function($http) {
     var methods = {
       getAll: function() {
