@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/CEN303110A/EssenceEvents/issues"
   },
-  "homepage": "https://github.com/CEN303110A/EssenceEvents#readme"
+  "homepage": "https://github.com/CEN303110A/EssenceEvents#readme",
+  "dependencies": {
+    "mongoose": "^4.4.2"
+  }
 }
