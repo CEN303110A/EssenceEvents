@@ -7,8 +7,15 @@ var config = require('./config/config.js'),
     Customer = require('./model/customerSchema');
 
 mongoose.connect(config.db.uri, function(err) {
+<<<<<<< HEAD
   if (err) console.log(err);
   else console.log('Connection successful');
+=======
+  if(err) throw err;
+  else {
+    console.log('Connection to DB successful!');
+  }
+>>>>>>> 53cdd72b2a450005bfef5ef4da30197e01c8873c
 });
 
 //configure views
@@ -40,7 +47,7 @@ app.post('/createCustomer', function(req, res) {
       res.json(customer);
     }
   });
-       
+
 });
 
 app.listen(config.port, function() {
