@@ -6,15 +6,15 @@ var mongoose = require('mongoose'),
   var Schema = mongoose.Schema;
 
 var customerSchema = new Schema({
-  username: string,
-  password: string,
-  id: string,
-  name: string,
-  phoneNumber: number,
-  email: string,
+  username: String,
+  password: String,
+  id: String,
+  name: String,
+  phoneNumber: Number,
+  email: String,
   subcontractor: [Subcontractor],
   budget: {
-    total: number
+    total: Number
   },
   events: [Event]
 });
