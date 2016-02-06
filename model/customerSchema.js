@@ -1,9 +1,7 @@
-/*NEED TO REQUIRE OTHER MODELS*/
-
 var mongoose = require('mongoose'),
-  var Subcontractor = require('subcontractorSchema.js'),
-  var Event = require('eventSchema.js'),
-  var Schema = mongoose.Schema;
+  Subcontractor = require('./subcontractorSchema.js'),
+  Event = require('./eventSchema.js'),
+  Schema = mongoose.Schema;
 
 var customerSchema = new Schema({
   username: String,
