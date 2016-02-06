@@ -6,7 +6,12 @@ var config = require('./config/config.js'),
     app = express(),
     Customer = require('./model/customerSchema');
 
-mongoose.connect(config.db.uri);
+mongoose.connect(config.db.uri, function(err) {
+  if(err) throw err;
+  else {
+    console.log('Connection to DB successful!');
+  }
+});
 
 //configure views
 app.use(morgan('dev'));
@@ -37,7 +42,7 @@ app.post('/createCustomer', function(req, res) {
       res.json(customer);
     }
   });
-       
+
 });
 
 app.listen(config.port, function() {
