@@ -10,7 +10,7 @@ angular.module('WebApp').config(['$stateProvider', '$urlRouterProvider',
       })
       .state('homepage', {
         url: '',
-        templateUrl: '../views/home.client.view.html',
+        templateUrl: '/app/views/home.client.view.html',
         params: {
           successMessage: null
         }
