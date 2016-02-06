@@ -19,6 +19,7 @@
   "homepage": "https://github.com/CEN303110A/EssenceEvents#readme",
   "dependencies": {
     "bower": "^1.7.7",
+    "body-parser": "^1.14.2",
     "express": "^4.13.4",
     "kerberos": "0.0.18",
     "mongodb": "^2.1.6",
