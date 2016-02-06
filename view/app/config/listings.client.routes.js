@@ -1,4 +1,5 @@
-angular.module('listings').config(['$stateProvider', '$urlRouterProvider',
+// angular.module('listings').config(['$stateProvider', '$urlRouterProvider',
+angular.module('WebApp').config(['$stateProvider', '$urlRouterProvider',
   function($stateProvider) {
     //Listings state providing
     $stateProvider
@@ -7,9 +8,9 @@ angular.module('listings').config(['$stateProvider', '$urlRouterProvider',
         abstract: true,
         template: '<ui-view/>'
       })
-      .state('listings.list', {
+      .state('homepage', {
         url: '',
-        templateUrl: 'app/views/list-listings.client.view.html',
+        templateUrl: '../views/home.client.view.html',
         params: {
           successMessage: null
         }
