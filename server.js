@@ -6,7 +6,7 @@ var config = require('./config/config.js'),
     app = express();
 
 //configure views
-app.use(morgan());
+app.use(morgan('dev'));
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(express.static('view'));
