@@ -6,7 +6,10 @@ var config = require('./config/config.js'),
     app = express(),
     Customer = require('./model/customerSchema');
 
-mongoose.connect(config.db.uri);
+mongoose.connect(config.db.uri, function(err) {
+  if (err) console.log(err);
+  else console.log('Connection successful');
+});
 
 //configure views
 app.use(morgan('dev'));
