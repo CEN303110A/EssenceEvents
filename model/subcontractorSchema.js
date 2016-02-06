@@ -6,6 +6,6 @@ var subcontractorSchema = new Schema({
   link: String
 });
 
-var Subcontractor = mongoose.model('Subcontractor', subcontractor);
+var Subcontractor = mongoose.model('Subcontractor', subcontractorSchema);
 
 module.exports = Subcontractor;
