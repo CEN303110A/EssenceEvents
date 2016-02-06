@@ -3,7 +3,15 @@ var config = require('./config/config.js'),
     express = require('express'),
     morgan = require('morgan'),
     bodyparser = require('body-parser'),
-    app = express();
+    app = express(),
+    Customer = require('./model/customerSchema');
+
+mongoose.connect(config.db.uri, function(err) {
+  if(err) throw err;
+  else {
+    console.log('Connection to DB successful!');
+  }
+});
 
 //configure views
 app.use(morgan('dev'));
@@ -23,21 +31,18 @@ app.get('/*' , function(req , res){
 
 app.post('/createCustomer', function(req, res) {
 
-    var username = req.body.username;
-    console.log(username);
-    res.send(username);
-    /*
-     var username = req.body.username,
-      password = req.body.password,
-      id = req.body.id,
-      name = req.body.name,
-      phoneNumber = req.body.phoneNumber,
-      email = req.body.email,
-      subcontractor = req.body.subcontractor,
-      budget = req.body.budget,
-      events = req.body.events;
+  var customer = new Customer(req.body);
+  console.log('somethingsomething');
+  customer.save(function(err) {
+    if (err) {
+      console.log(err);
+      res.status(400).send(err);
+    }
+    else {
+      res.json(customer);
+    }
+  });
 
-     */
 });
 
 app.listen(config.port, function() {
