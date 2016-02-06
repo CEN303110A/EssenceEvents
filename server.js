@@ -1,10 +1,12 @@
 var config = require('./config/config.js'), 
     mongoose = require('mongoose'),   
-    express = require('./config/express');
+    express = require('express');
+    app = express();
 
-module.exports.start = function() {
-  var app = express.init();
-  app.listen(config.port, function() {
-    console.log('App listening on port', config.port);
-  });
-};
+app.get('/', function (req, res) {
+	  res.send('Hello World!');
+});
+
+app.listen(3000, function () {
+	  console.log('Example app listening on port 3000!');
+});
