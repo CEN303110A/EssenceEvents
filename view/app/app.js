@@ -8,8 +8,6 @@ angular.module('WebApp', []);
  var app = angular.module('FrontEnd', ['ui.router', 'ui.bootstrap', 'WebApp']);
 //var app = angular.module('FrontEnd', ['ui.router', 'WebApp']);
 
-console.log('testpoint2');
-
 /* application configuration */
 app.config(['$urlRouterProvider', '$locationProvider',
   function($urlRouterProvider, $locationProvider) {
@@ -21,7 +19,7 @@ app.config(['$urlRouterProvider', '$locationProvider',
     });
 
     /* go to the '/listings' URL if an invalid route is provided */
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/homepage');
   }
 ]);
 
