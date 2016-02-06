@@ -11,9 +11,9 @@ angular.module('WebApp').config(['$stateProvider', '$urlRouterProvider',
       .state('homepage', {
         url: '',
         templateUrl: '/app/views/home.client.view.html',
-        params: {
-          successMessage: null
-        }
+        // params: {
+        //   successMessage: null
+        // }
       })
       .state('services.view', {
         url: '/services',
