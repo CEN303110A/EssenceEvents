@@ -21,14 +21,13 @@ app.config(['$urlRouterProvider', '$locationProvider',
     });
 
     /* go to the '/listings' URL if an invalid route is provided */
-    $urlRouterProvider.otherwise('/listings');
+    $urlRouterProvider.otherwise('/');
   }
 ]);
 
 /* set the initial state of the application */
 app.run(['$state',
   function($state) {
-    console.log('testPoint1');
     $state.go('homepage');
   }
 ]);
