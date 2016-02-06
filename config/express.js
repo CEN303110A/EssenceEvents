@@ -17,6 +17,8 @@ module.exports.init = function() {
 
   //DO SOME API STUFF
 
+  app.use('/', experss.static('public'));
+
   app.get('/', function(req, res) {
     res.sendFile(__dirname.substring(0, __dirname.length - 6) + 'view/index.html');
   });
