@@ -6,7 +6,14 @@ var config = require('./config/config.js'),
     setup = require('./config/dbSetup.js'),
     Customer = require('./model/customerSchema');
 
-//setup.connectDB();
+
+//TODO add test suite
+var argvars = process.argv.slice(2);
+console.log(argvars);
+if (argvars[0] === "--db-test"){
+	setup.connectDB();
+}
+
 
 //configure views
 app.use(morgan('dev'));
