@@ -1,17 +1,12 @@
 var config = require('./config/config.js'),
-    mongoose = require('mongoose'),
     express = require('express'),
     morgan = require('morgan'),
     bodyparser = require('body-parser'),
     app = express(),
+    setup = require('./config/dbSetup.js'),
     Customer = require('./model/customerSchema');
 
-mongoose.connect(config.db.uri, function(err) {
-  if(err) throw err;
-  else {
-    console.log('Connection to DB successful!');
-  }
-});
+//setup.connectDB();
 
 //configure views
 app.use(morgan('dev'));
