@@ -1,31 +1,51 @@
-var path = require('path'),
-  express = require('express'),
-  mongoose = require('mongoose'),
-  morgan = require('morgan'),
-  bodyParser = require('body-parser'),
-  config = require('./config');
-  /*CONTROLLERS
-  ^
- /_\
-/___\*/
+var express = require('express'),
+    morgan  = require('morgan'),
+    bp      = require('body-parser'),
+    db      = require('./dbSetup.js'); 
+    app     = express(),
+    Customer = require('../model/customerSchema'),
+    path    = require('path');
+module.exports.init = function(){
+	db.connectDB();
+	
 
-module.exports.init = function() {
-  mongoose.connect(config.db.uri);
-  var app = express();
-  app.use(morgan('dev'));
-  app.use(bodyParser.json());
+	app.use(morgan('dev'));
+	app.use(bp.json());           
 
-  //DO SOME API STUFF
+	app.use(express.static(__dirname + '/../view'));
 
-  app.use('/', experss.static('public'));
+	app.use('/bower_components', express.static(__dirname + '/../bower_components'));
 
-  app.get('/', function(req, res) {
-    res.sendFile(__dirname.substring(0, __dirname.length - 6) + 'view/index.html');
-  });
+	app.get('/' , function(req , res){
+//		res.sendFile('/index.html');
+		res.sendFile(path.resolve('view/index.html'));	
+	});
 
-  app.all('*', function(req, res) {
-    res.redirect('/');
-  });
+	app.get('/*' , function(req , res){
+	//	res.sendFile('/index.html');
+		res.sendFile(path.resolve('view/index.html'));
+	});
 
-  return app;
-};
+	app.post('/createCustomer', function(req, res) {
+
+  		var customer = new Customer(req.body);
+ 		console.log('somethingsomething');
+ 		customer.save(function(err) {
+    		if (err){ 
+      			console.log(err);
+      			res.status(400).send(err);
+    		}
+    		else {
+      			res.json(customer);
+   		 }
+  		});
+
+		});
+
+
+	app.listen(config.port, function() {
+	  console.log('Example app listening on port ', config.port, '!');
+});
+			
+}
+
