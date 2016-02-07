@@ -7,15 +7,10 @@ var config = require('./config/config.js'),
     Customer = require('./model/customerSchema');
 
 mongoose.connect(config.db.uri, function(err) {
-<<<<<<< HEAD
-  if (err) console.log(err);
-  else console.log('Connection successful');
-=======
   if(err) throw err;
   else {
     console.log('Connection to DB successful!');
   }
->>>>>>> 53cdd72b2a450005bfef5ef4da30197e01c8873c
 });
 
 //configure views
@@ -24,14 +19,15 @@ app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(express.static('view'));
 
+app.use('/', express.static(__dirname + '/../../client'));
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
 
 app.get('/' , function(req , res){
-	res.sendFile('/index.html');
+	res.sendFile('client/index.html');
 });
 
 app.get('/*' , function(req , res){
-	res.sendFile('/index.html');
+	res.sendFile(path.resolve('client/index.html'));
 });
 
 app.post('/createCustomer', function(req, res) {
@@ -53,3 +49,4 @@ app.post('/createCustomer', function(req, res) {
 app.listen(config.port, function() {
 	  console.log('Example app listening on port ', config.port, '!');
 });
+
