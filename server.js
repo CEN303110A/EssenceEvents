@@ -4,6 +4,7 @@ var config = require('./config/config.js'),
     morgan = require('morgan'),
     bodyparser = require('body-parser'),
     app = express(),
+    path = require('path'),
     Customer = require('./model/customerSchema');
 
 mongoose.connect(config.db.uri, function(err) {
@@ -19,15 +20,15 @@ app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(express.static('view'));
 
-app.use('/', express.static(__dirname + '/client'));
+app.use('/', express.static(__dirname + '/view'));
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
 
 app.get('/' , function(req , res){
-	res.sendFile('client/index.html');
+	res.sendFile('view/index.html');
 });
 
 app.get('/*' , function(req , res){
-	res.sendFile(path.resolve('client/index.html'));
+	res.sendFile(path.resolve('view/index.html'));
 });
 
 app.post('/createCustomer', function(req, res) {
